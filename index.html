@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #message {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput" min="1" max="100">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="message"></p>
+
+    <script>
+        // Generate a random number between 1 and 100
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById("guessInput").value);
+            attempts++;
+
+            if (guess === targetNumber) {
+                showMessage(`Congratulations! You guessed the number ${targetNumber} in ${attempts} attempts.`);
+            } else if (guess < targetNumber) {
+                showMessage("Try a higher number.");
+            } else {
+                showMessage("Try a lower number.");
+            }
+        }
+
+        // Add event listener for button click
+        const buttonElement = document.querySelector("button");
+        buttonElement.addEventListener("click", checkGuess);
+
+        // Add event listener for Enter key press
+        const inputElement = document.getElementById("guessInput");
+        inputElement.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkGuess();
+            }
+        });
+
+        function showMessage(message) {
+            document.getElementById("message").textContent = message;
+        }
+    </script>
+</body>
+</html>
