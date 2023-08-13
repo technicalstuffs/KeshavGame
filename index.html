@@ -27,13 +27,15 @@
 
         function checkGuess() {
             const guess = parseInt(document.getElementById("guessInput").value);
-            attempts++;
 
             if (guess === targetNumber) {
+                attempts++;
                 showMessage(`Congratulations! You guessed the number ${targetNumber} in ${attempts} attempts.`);
             } else if (guess < targetNumber) {
+                attempts++;
                 showMessage("Try a higher number.");
             } else {
+                attempts++;
                 showMessage("Try a lower number.");
             }
         }
@@ -56,3 +58,4 @@
     </script>
 </body>
 </html>
+
